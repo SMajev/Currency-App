@@ -10,7 +10,6 @@ class root:
     def __init__(self) -> None:
         self._nbp = nbp_api.NBPAPI
 
-
     def get_pln_rate(self) -> str:
         rate = input("Względem jakiej waluty chcesz otrzymać kurs: ").upper()
         result = round(1 / self._nbp.get_rate_to_pln(rate), 2)
@@ -52,7 +51,6 @@ class root:
         result = pd.DataFrame(rates, index=dates)
         return result        
 
-
     def predict_to_tomorrow(self, x=11):
         rate = input("Wpisz symbol waluty która cię interesuję: ").lower()
         rates_lst, dates = self._nbp.get_last_10_rates(rate, 10)
@@ -62,12 +60,10 @@ class root:
         print(pred_df)
         return f'Szacowane:   {round(y_pred, 4)}'
 
-
     @staticmethod
     def _calculate_rate_to_rate(rate_a: float, rate_b: float, precision=2) -> float:
         result = rate_a / rate_b
         return round(result, precision)
-
 
     @staticmethod
     def _estimate_param(y: Array) -> tuple:
@@ -80,16 +76,5 @@ class root:
         w = ss_xy / ss_xx
         b = my - w * mx
         return (w, b)
-        
 
-        
-
-
-if __name__ == '__main__':
-    root = root()
-    print(root.predict_to_tomorrow())
-    # print(root.predict_to_tomorrow())
-    # print(root.get_pln_rate())
-    # with pd.option_context("display.min_rows", 50, "display.max_rows", 100, "display.max_columns", 15, 'display.max_colwidth', 150):
-    #     print(root.get_archive_rate_spread())
 
