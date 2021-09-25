@@ -3,6 +3,7 @@ import numpy as np
 
 Array = np.array([float])
 
+
 class NBPAPI:
 
     @staticmethod
@@ -19,7 +20,6 @@ class NBPAPI:
             return 1
         url = f"http://api.nbp.pl/api/exchangerates/rates/a/{rate_name}/{date}"
         rate = requests.get(url).json()['rates'][0]['mid']
-        
         return rate
 
     @staticmethod
