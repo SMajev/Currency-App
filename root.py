@@ -1,9 +1,9 @@
-from old.nbp_api import NBPAPI
 import nbp_api
 import seaborn as sns
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
 Array = np.array([float])
 
 class root:
