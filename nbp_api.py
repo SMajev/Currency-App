@@ -28,19 +28,9 @@ class NBPAPI:
         data = np.array([rate['mid'] for rate in rates])
         return data
 
-
     @staticmethod
     def get_last_10_rates(code: str, topCount: int) -> Array:
         url = f"http://api.nbp.pl/api/exchangerates/rates/a/{code.lower()}/last/{str(topCount)}/?format=json"
         rates = requests.get(url).json()['rates']
         data = np.array([rate['mid'] for rate in rates])
         return data
-
-
-
-if __name__ == '__main__':
-    NBPAPI = NBPAPI()
-    print(NBPAPI.get_rate_to_pln('EUR'))
-    print(NBPAPI.get_archive_rate_to_pln('EUR', '2021-09-01'))
-    print(NBPAPI.get_archive_rate_to_pln_spread('EUR', '2021-09-01', '2021-09-10'))
-    print(NBPAPI.get_last_10_rates('eur', 10))
