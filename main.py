@@ -1,1 +1,4 @@
-print('Yo')
+import CLI
+
+if __name__ == '__main__':
+    CLI.CLI()
